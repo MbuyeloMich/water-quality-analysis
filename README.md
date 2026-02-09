@@ -4,6 +4,125 @@
 
 > **Advanced water quality analysis using AI/ML and data science techniques to uncover hidden patterns in South African catchment systems.**
 
+## 🏗️ System Architecture
+
+```mermaid
+graph TB
+    subgraph "Data Sources"
+        A1[📊 Excel Dataset<br/>water_quality.xlsx]
+        A2[🌐 RSS Feeds<br/>CSIR, News24, Eng News]
+    end
+    
+    subgraph "Data Processing Layer"
+        B1[🐼 Pandas<br/>Data Cleaning & Analysis]
+        B2[🔢 NumPy<br/>Numerical Computing]
+        B3[📡 Feedparser<br/>News Aggregation]
+    end
+    
+    subgraph "Analysis Engine"
+        C1[🤖 Correlation Analysis<br/>pH-Chemical Patterns]
+        C2[📈 Statistical Analysis<br/>WHO Compliance]
+        C3[🔍 Pattern Recognition<br/>Pollution Detection]
+    end
+    
+    subgraph "Visualization Layer"
+        D1[📊 Plotly<br/>Interactive Charts]
+        D2[🎨 Matplotlib/Seaborn<br/>Statistical Plots]
+        D3[💅 Custom CSS<br/>Modern UI Components]
+    end
+    
+    subgraph "Presentation Layer"
+        E1[⚡ Streamlit<br/>Web Dashboard]
+    end
+    
+    subgraph "User Interface"
+        F1[🖥️ Dashboard Overview<br/>Metrics & KPIs]
+        F2[🔬 Discovery Analysis<br/>Scientific Insights]
+        F3[📈 Visualizations<br/>Interactive Charts]
+        F4[🌊 Live News Feed<br/>Real-time Updates]
+    end
+    
+    A1 --> B1
+    A2 --> B3
+    B1 --> C1
+    B1 --> C2
+    B2 --> C1
+    B3 --> F4
+    C1 --> D1
+    C2 --> D1
+    C3 --> D2
+    D1 --> E1
+    D2 --> E1
+    D3 --> E1
+    E1 --> F1
+    E1 --> F2
+    E1 --> F3
+    E1 --> F4
+    
+    style A1 fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+    style A2 fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+    style E1 fill:#FF4B4B,stroke:#333,stroke-width:3px,color:#fff
+    style F1 fill:#10B981,stroke:#333,stroke-width:2px,color:#fff
+    style F2 fill:#10B981,stroke:#333,stroke-width:2px,color:#fff
+    style F3 fill:#10B981,stroke:#333,stroke-width:2px,color:#fff
+    style F4 fill:#10B981,stroke:#333,stroke-width:2px,color:#fff
+```
+
+### 🛠️ Tech Stack
+
+<div align="center">
+
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) |
+| **Data Processing** | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white) |
+| **Visualization** | ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge&logo=python&logoColor=white) |
+| **Language** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) |
+| **News Integration** | ![RSS](https://img.shields.io/badge/RSS-FFA500?style=for-the-badge&logo=rss&logoColor=white) |
+| **Version Control** | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white) |
+| **Deployment** | ![Streamlit Cloud](https://img.shields.io/badge/Streamlit_Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) |
+
+</div>
+
+### 📊 Data Flow Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         USER BROWSER                                 │
+└────────────────────────┬────────────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    STREAMLIT WEB APP (app.py)                        │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────────┐   │
+│  │ Overview │  │Discovery │  │ Viz Tab  │  │ Raw Data Explorer│   │
+│  └──────────┘  └──────────┘  └──────────┘  └──────────────────┘   │
+└────────┬────────────────┬────────────────┬────────────────┬─────────┘
+         │                │                │                │
+         ▼                ▼                ▼                ▼
+┌────────────────┐ ┌──────────────┐ ┌────────────┐ ┌─────────────┐
+│  News Feed     │ │  Correlation │ │  Plotly    │ │  Pandas     │
+│  (Feedparser)  │ │  Analysis    │ │  Charts    │ │  DataFrames │
+└────────────────┘ └──────────────┘ └────────────┘ └─────────────┘
+         │                │                │                │
+         ▼                ▼                ▼                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                     DATA PROCESSING LAYER                            │
+│  • pH-Chemical Correlation Engine                                   │
+│  • WHO Compliance Calculator                                        │
+│  • Statistical Analysis (Mean, Median, Range)                       │
+│  • Pattern Recognition & Anomaly Detection                          │
+└────────────────────────┬────────────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                       DATA SOURCES                                   │
+│  📊 Excel: data/raw/water_quality.xlsx                              │
+│  🌐 RSS: CSIR, News24, Engineering News                             │
+│  📈 Processed: data/processed/water_quality_summary.csv             │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
 ## 🔗 Live Demo
 
 **🚀 [Launch Dashboard](YOUR_LIVE_LINK_HERE)** - Explore the interactive water quality analysis dashboard
@@ -11,16 +130,16 @@
 ## 📸 Screenshots
 
 ### Dashboard Overview
-![Home Page](home%20page%20screen%20short.png)
-*Main dashboard showing WHO compliance metrics and key statistics for both catchments*
+![Dashboard Overview](overview.png)
+*Interactive dashboard showing WHO compliance metrics, key statistics, and real-time news feed*
 
-### Scientific Discovery
-![Discovery Analysis](Screenshot%202026-02-09%20145812.png)
-*Comprehensive analysis revealing opposite pH-chemical correlations*
+### Data Visualization
+![Correlation Analysis](visualization%201.png)
+*pH-Chemical correlation comparison revealing opposite patterns between catchments*
 
-### Live News Feed
-![News Integration](news%20blog.png)
-*Real-time water quality news from CSIR, Department of Water, and national sources*
+### Live News Integration
+![News Feed](news%20blog.png)
+*Real-time water quality news from CSIR, Department of Water, and national sources with beautiful card design*
 
 ## 🎯 Discovery: Opposite Chemical Behaviors in Adjacent Catchments
 
