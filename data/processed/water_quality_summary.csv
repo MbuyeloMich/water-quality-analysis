@@ -1,0 +1,9 @@
+Finding,Value,Implication
+LUVUVU Mean pH,6.27,Acidic water
+MHLATHUZE Mean pH,7.79,Near-neutral to alkaline
+LUVUVU WHO Compliance,19/84 samples,Serious water quality issue
+MHLATHUZE WHO Compliance,132/198 samples,Moderate water quality issue
+Strongest Correlation LUVUVU,Unknown,Geogenic/mineral influence
+Strongest Correlation MHLATHUZE,Sulfate (SO4) = -0.276,Weak anthropogenic influence
+Largest Difference in Correlations,SO4: LUVUVU=+0.596 vs MHLATHUZE=-0.276,Fundamentally different water chemistry
+Toxic Metals Detected >50%,Check metal detection tables,Potential health risk assessment needed
