@@ -1,6 +1,6 @@
 # 💧 Water Quality Analysis Dashboard
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR_LIVE_LINK_HERE)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://phinomenon.streamlit.app/)
 
 > **Advanced water quality analysis using AI/ML and data science techniques to uncover hidden patterns in South African catchment systems.**
 
@@ -125,7 +125,7 @@ graph TB
 
 ## 🔗 Live Demo
 
-**🚀 [Launch Dashboard](YOUR_LIVE_LINK_HERE)** - Explore the interactive water quality analysis dashboard
+**🚀 [Launch Dashboard](https://phinomenon.streamlit.app/)** - Explore the interactive water quality analysis dashboard
 
 ## 📸 Screenshots
 
