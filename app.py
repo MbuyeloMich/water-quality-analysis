@@ -160,6 +160,28 @@ with st.sidebar:
     if st.button("🔄 Reset Filters"):
         st.rerun()
 
+# Helper function for numpy 2.x / pyarrow compatibility
+def make_arrow_compatible(df):
+    """Convert dataframe to pyarrow-compatible format for numpy 2.x compatibility"""
+    if df is None or df.empty:
+        return df
+    
+    # Create a new dataframe from scratch with compatible dtypes
+    new_data = {}
+    for col in df.columns:
+        try:
+            # Convert to list and back to force standard numpy dtype
+            col_data = df[col].tolist()
+            new_data[col] = col_data
+        except Exception:
+            # If conversion fails, keep as string
+            try:
+                new_data[col] = df[col].astype(str).tolist()
+            except Exception:
+                new_data[col] = [str(x) for x in df[col]]
+    
+    return pd.DataFrame(new_data, index=df.index)
+
 # Load data with correct path
 @st.cache_data
 def load_data():
@@ -356,7 +378,7 @@ if dataset_choice == "Compare Both":
         }
         
         stats_df = pd.DataFrame(stats_data)
-        st.dataframe(stats_df, use_container_width=True, hide_index=True)
+        st.dataframe(make_arrow_compatible(stats_df), use_container_width=True, hide_index=True)
         
         # Live News Feed
         st.markdown("""<br>""", unsafe_allow_html=True)
@@ -648,7 +670,7 @@ if dataset_choice == "Compare Both":
         }
         
         causes_df = pd.DataFrame(causes)
-        st.dataframe(causes_df, use_container_width=True, hide_index=True)
+        st.dataframe(make_arrow_compatible(causes_df), use_container_width=True, hide_index=True)
         
         # Scientific Significance
         st.divider()
@@ -773,7 +795,7 @@ if dataset_choice == "Compare Both":
         }
         
         recommendations_df = pd.DataFrame(recommendations)
-        st.dataframe(recommendations_df, use_container_width=True, hide_index=True)
+        st.dataframe(make_arrow_compatible(recommendations_df), use_container_width=True, hide_index=True)
         
         # Key Takeaways
         st.divider()
@@ -1019,7 +1041,7 @@ if dataset_choice == "Compare Both":
         
         if dataset_view == "MHLATHUZE":
             st.write(f"**MHLATHUZE Dataset**: {len(mhlathuze_df)} samples × {len(mhlathuze_df.columns)} parameters")
-            st.dataframe(mhlathuze_df.head(50), use_container_width=True)
+            st.dataframe(make_arrow_compatible(mhlathuze_df.head(50)), use_container_width=True)
             
             # Data summary
             with st.expander("📊 Data Summary"):
@@ -1028,7 +1050,7 @@ if dataset_choice == "Compare Both":
                 st.write(mhlathuze_df.dtypes.value_counts())
         else:
             st.write(f"**LUVUVU Dataset**: {len(luvuvu_df)} samples × {len(luvuvu_df.columns)} parameters")
-            st.dataframe(luvuvu_df.head(50), use_container_width=True)
+            st.dataframe(make_arrow_compatible(luvuvu_df.head(50)), use_container_width=True)
             
             with st.expander("📊 Data Summary"):
                 st.write("**Columns:**", list(luvuvu_df.columns))
